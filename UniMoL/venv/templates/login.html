@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login UNIVPM</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+   </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Accesso al Portale</h2>
+    <form method="POST">
+      <div class="form-group">
+        <label for="username">Nome utente</label>
+        <input type="text" name="username" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" required />
+      </div>
+      <button type="submit">Accedi</button>
+    </form>
+    {% if errore %}
+      <div class="errore">{{ errore }}</div>
+    {% endif %}
+  </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Corsi disponibili</title>
+   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="navbar">
+    <h1>Laboratorio UniMoL</h1>
+    <div>
+      <a href="{{ url_for('laboratorio') }}">HOME</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+  </div>
+  
+
+<div class="main-content">
+  <div class="buttons">
+    {% if  session['ruolo'] == 'professore' or session['ruolo'] == 'ricercatore' %}
+      <button class="btn-corsi" onclick="window.location.href='{{ url_for('prenotazione') }}'">Prenota aula</button>
+      <button class="btn-corsi" onclick="window.location.href='{{ url_for('modifica_prenotazione') }}'">Modifica prenotazione aula</button>
+      <button class="btn-corsi" onclick="window.location.href='{{ url_for('elimina_prenotazione') }}'">Elimina prenotazione aula</button>
+    {% elif session['ruolo'] == 'studente' %}
+      <button class="btn-corsi" onclick="window.location.href='{{ url_for('prenotazione_stud') }}'">Prenota aula</button>
+      <button class="btn-corsi" onclick="window.location.href='{{ url_for('elimina_prenotazione_stud') }}'">Elimina prenotazione aula</button>
+    {% endif %}
+  </div>
+  <div id="calendar"></div>
+</div>
+
+
+</center>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+  <footer>Il sito è stato creato a scopo illustrativo, creato da Letizia Lucrezia Mulieri, Nicolò Palmerini e Santarelli Paolo.</footer>
+</body>
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        locale: 'it',
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+         events: "/api/corsi"
+         });
+      calendar.render();
+    });
+
+  </script>
+</html>

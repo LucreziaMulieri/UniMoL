@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Prenotazione</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="navbar">
+    <h1>Laboratorio UniMoL</h1>
+    <div>
+      <a href="{{ url_for('laboratorio') }}">HOME</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+  </div>
+
+  <a href="javascript:history.back()" class="freccia-indietro">
+    <i class="fas fa-arrow-left"></i> Torna indietro
+  </a>
+
+  <div class="form-wrapper">
+    <h1>Crea Prenotazione</h1>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flash">
+          {% for msg in messages %}<li>{{ msg }}</li>{% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+<form method="POST">
+  <div class="form-group">
+    <label for="tipo">Tipo:</label>
+    <select id="tipo" name="tipo" required>
+      <option value="">Seleziona</option>
+      {% if session['ruolo'] == 'professore' %}
+      <option value="lezione">Lezione</option>
+      {% endif %}
+      <option value="attività">Attività</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="data">Data:</label>
+    <input type="date" id="data" name="data" required>
+  </div>
+
+  <div class="form-group">
+    <label for="ora_inizio">Ora inizio:</label>
+    <input type="time" id="ora_inizio" name="ora_inizio" required>
+  </div>
+
+  <div class="form-group">
+    <label for="ora_fine">Ora fine:</label>
+    <input type="time" id="ora_fine" name="ora_fine" required>
+  </div>
+
+  <div class="form-group">
+    <label for="max_partecipanti">Max Partecipanti:</label>
+    <input type="number" id="max_partecipanti" name="max_partecipanti" min="1" max="20" required>
+  </div>
+
+  <div class="form-group">
+    <label for="descrizione">Descrizione:</label>
+    <textarea id="descrizione" name="descrizione"></textarea>
+  </div>
+
+  <button type="submit">Prenota</button>
+</form>
+
+  </div>
+
+  <footer>Il sito è stato creato a scopo illustrativo, creato da Letizia Lucrezia Mulieri, Nicolò Palmerini e Santarelli Paolo.</footer>
+</body>
+</html>

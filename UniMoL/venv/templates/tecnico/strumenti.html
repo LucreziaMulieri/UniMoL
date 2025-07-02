@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Scelta: Strumenti o Materiale</title>
+ <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+    <h1>Laboratorio UniMoL</h1>
+    <div>
+      <a href="{{ url_for('laboratorio') }} ">HOME</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+  </div>
+  <a href="javascript:history.back()" class="freccia-indietro">⬅ Torna indietro</a>
+  <div class="container">
+    <h1>COSA VUOI FARE?</h1>
+    
+
+    <div class="choice-buttons">
+  <a href="{{ url_for('crea_strumento') }}"><button>Crea strumento</button></a>
+  <a href="{{ url_for('modifica_strumento') }}"><button>Modifica strumento</button></a>
+  <a href="{{ url_for('elimina_strumento') }}"><button>Elimina strumento</button></a>
+</div>
+
+  </div>
+  <footer>Il sito è stato creato a scopo illustrativo, creato da Lucrezia Letizia Mulieri, Nicolò Palmerini e Santarelli Paolo.</footer>
+
+</body>
+</html>

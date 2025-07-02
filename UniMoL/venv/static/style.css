@@ -1,0 +1,251 @@
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff0f0;
+      margin: 0;
+      padding: 0;
+      color: #b30000;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #cc0000;
+      color: white;
+    }
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+    .navbar a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      flex: 1;
+      padding: 40px;
+      text-align: center;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: white;
+      margin: 10px auto;
+      padding: 15px 20px;
+      max-width: 500px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(200, 0, 0, 0.2);
+      font-size: 18px;
+    }
+.freccia-indietro {
+  display: inline-block;
+  margin: 20px;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: white;
+  background-color: #cc0000;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 6px rgba(204, 0, 0, 0.3);
+  width: auto;               /* non si allarga a tutto schermo */
+  max-width: 120px;          /* limite massimo */
+}
+
+.freccia-indietro:hover {
+  background-color: #a60000;
+  transform: scale(1.02);
+}
+
+
+
+    form button {
+      margin-top: 20px;
+      padding: 10px 25px;
+      font-size: 18px;
+      background-color: #cc0000;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    footer {
+      margin-top:20%;
+      background-color: #cc0000;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 14px;
+    }
+    .choice-buttons {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+  }
+  .choice-buttons button {
+    background-color: #cc0000;
+    border: none;
+    color: white;
+    font-size: 24px;
+    padding: 40px 80px;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(204,0,0,0.6);
+    transition: background-color 0.3s ease;
+  }
+  .choice-buttons button:hover {
+    background-color: #a60000;
+  }.lab-content {
+      text-align: center;
+      margin-top: 100px;
+    }
+     .btn-corsi {
+      margin-top: 30px;
+      padding: 20px 40px;
+      font-size: 24px;
+      background-color: #cc0000;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width:250px;
+    }
+    .btn-corsi:hover {
+      background-color: #a60000;
+    }
+     .login-container {
+      
+      background: white;
+      padding: 50px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(200, 0, 0, 0.2);
+      width: 350px;
+    }
+    h2 {
+      color: #b30000;
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      font-weight: bold;
+      color: #990000;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #cc0000;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #cc0000;
+      color: white;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .errore {
+      color: red;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .main-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 30px;
+  gap: 30px;
+}
+
+/* Colonna sinistra con i bottoni */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* Calendario più piccolo e allineato a destra */
+#calendar {
+  width: 80%;
+  max-width: 1100px;
+}
+
+.form-wrapper {
+  max-width: 500px;         /* limite larghezza */
+  margin: 60px auto;        /* centra orizzontalmente e spazio verticale */
+  padding: 40px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(204, 0, 0, 0.15);
+  text-align: left;         /* allinea testo a sinistra */
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* allinea label e input a sinistra */
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #990000;
+  margin-bottom: 6px;
+  font-size: 16px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  max-width: 350px;   /* larghezza massima coerente col tuo layout */
+  padding: 10px;
+  border: 1px solid #cc0000;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
+  box-sizing: border-box;
+  font-family: inherit;
+  resize: vertical;   /* solo textarea è ridimensionabile verticalmente */
+}
+
+/* Se vuoi textarea un po’ più grande */
+.form-group textarea {
+  min-height: 80px;
+}
+
+/* Stile per il bottone */
+form button {
+  margin-top: 10px;
+  padding: 12px 25px;
+  font-size: 18px;
+  background-color: #cc0000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  max-width: 350px;
+  width: 100%;
+}
+
+form button:hover {
+  background-color: #a60000;
+}
+
+
+    

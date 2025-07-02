@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Laboratorio UniMoL</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="navbar">
+    <h1>Laboratorio UniMoL</h1>
+    <div>
+      {% if session['ruolo'] == 'studente' or session['ruolo'] == 'professore' or session['ruolo'] == 'ricercatore' %}
+      <a href="{{ url_for('corsi') }}">Visualizza Calendario</a>
+       {% elif session['ruolo'] == 'tecnico' %}
+      <a href="{{ url_for('gestione') }}">Gestisci il laboratorio</a>
+       {% endif %}
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+  </div>
+  <div class="lab-content">
+    <h1>Benvenuto, {{ username }}! 🔬</h1>
+    <p>Hai effettuato l'accesso al laboratorio come {{ session['ruolo']|capitalize }}.</p>
+    {% if session['ruolo'] == 'studente' or session['ruolo'] == 'professore' or session['ruolo'] == 'ricercatore' %}
+    <button class="btn-corsi" onclick="window.location.href='{{ url_for('corsi') }}'">Visualizza Calendario</button>
+    <div class="lab">
+    <div class="test-tube">
+      <div class="liquid" style="--level: 60%; --color: #ff4d4d;"></div>
+    </div>
+    <div class="test-tube">
+      <div class="liquid" style="--level: 30%; --color: #4da6ff;"></div>
+    </div>
+    <div class="beaker">
+      <div class="liquid" style="--level: 50%; --color: #66ff66;"></div>
+    </div>
+  </div>
+  <button onclick="fillRandom()">💧 Aggiungi liquido casuale</button>
+    {% elif session['ruolo'] == 'tecnico' %}
+    <button class="btn-corsi" onclick="window.location.href='{{ url_for('gestione') }}'">Gestisci il laboratorio</button>
+    {% endif %}
+  </div>
+   
+
+  
+
+  <footer>Il sito è stato creato a scopo illustrativo, creato da Letizia Lucrezia Mulieri, Nicolò Palmerini e Santarelli Paolo.</footer>
+
+  <style>
+
+.lab {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.test-tube, .beaker {
+  width: 60px;
+  height: 200px;
+  border: 3px solid #b30000;
+  border-radius: 30px 30px 10px 10px;
+  position: relative;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.beaker {
+  width: 80px;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.liquid {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: var(--level, 0%);
+  background-color: var(--color, #cc0000);
+  transition: height 0.6s ease, background-color 0.6s ease;
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+button {
+  margin-top: 30px;
+  padding: 15px 30px;
+  font-size: 18px;
+  background-color: #cc0000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #990000;
+}
+</style>
+<script>function fillRandom() {
+  const tubes = document.querySelectorAll('.liquid');
+  tubes.forEach(liquid => {
+    const randomLevel = Math.floor(Math.random() * 80) + 10;
+    const colors = ['#ff4d4d', '#4da6ff', '#66ff66', '#ffcc00', '#cc99ff'];
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    liquid.style.setProperty('--level', `${randomLevel}%`);
+    liquid.style.setProperty('--color', color);
+  });
+}
+</script>
+</body>
+</html>
+  
