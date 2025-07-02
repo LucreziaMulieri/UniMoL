@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Modifica Strumento</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="navbar">
+    <h1>Laboratorio UniMoL</h1>
+    <div>
+      <a href="{{ url_for('laboratorio') }}">HOME</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+  </div>
+<a href="javascript:history.back()" class="freccia-indietro">⬅ Torna indietro</a>
+  <div class="container">
+    <h1>Modifica uno strumento</h1>
+
+    {% for st1 in st %}
+    <form method="POST">
+      <input type="hidden" name="id" value="{{ st1.id }}">
+      <label>Nome:</label>
+      <input type="text" name="nome" value="{{ st1.nome }}" required>
+      <label>Descrizione:</label>
+      <textarea name="descrizione" required>{{ st1.descrizione }}</textarea>
+      <label>Quantità:</label>
+      <input type="number" name="quantita" value="{{ st1.quantita }}" required>
+      <button type="submit">Salva modifiche</button>
+    </form>
+    <hr>
+    {% endfor %}
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flash-messages">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+  </div>
+
+  <footer>Il sito è stato creato a scopo illustrativo, creato da Lucrezia Letizia Mulieri, Nicolò Palmerini e Santarelli Paolo.</footer>
+</body>
+</html>
